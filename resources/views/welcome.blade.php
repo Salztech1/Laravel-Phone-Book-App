@@ -36,7 +36,7 @@
     <table class=" table-striped w-100">
         <tbody>
             <tr>
-                <td></td>
+             
             </tr>
             
         </tbody>
