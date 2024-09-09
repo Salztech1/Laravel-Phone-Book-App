@@ -9,7 +9,12 @@
             <div>
                 <input type="text" class="" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none;   border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
             </div>
-            <button class="" style="position: fixed; right: 0; margin: 10px;">Sorted By</button>
+
+            <select style="position: fixed; right: 0; margin: 10px; background-color: #F5F5F5; border: none; padding: 5px 5px;">
+                <option>Sort by:A-Z</option>
+                <option>A-Z</option>
+                <option>Z-A</option>
+            </select>
         </div>
     </div>
     <!-- <div class="input-group w-50"  >
