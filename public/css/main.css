@@ -39,3 +39,8 @@ a{
 input::placeholder {
     color: black;
   }
+
+  .number{
+    width: 38%;
+    
+  }
