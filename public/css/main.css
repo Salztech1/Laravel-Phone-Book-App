@@ -1,0 +1,40 @@
+body {
+    background-color: #111111;
+    color: #FFFFFF;
+    margin-left: 2%;
+}
+
+.side_bar{
+    margin-left: 2%;
+    
+}
+
+/* table th, table td {
+    width: 33.33%;
+} */
+
+.content{
+    color: black;
+    border: 1px solid white;
+   border-radius: 40px;
+   height: 986px;
+   
+    
+}
+
+.home{
+    margin-left: 2%;
+}
+
+.create_contact{
+    margin-top: 40%;
+    
+    
+}
+
+
+a{
+
+    text-decoration: none;
+  
+}
