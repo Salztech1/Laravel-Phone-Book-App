@@ -3,8 +3,9 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PagesController::class, 'showLandingPage'])->name('landing');
-
+// Route::get('/', [PagesController::class, 'showLandingPage'])->name('landing');
+//Route::get('/landing', [PagesController::class, 'showLandingPage'])->name('landing');
+Route::get('/', [PagesController::class, 'showLandingPage'])->name('showLandingPage');
 
 
 Route::get('contact-us', [PagesController::class, 'createContact'])->name('contact');

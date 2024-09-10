@@ -2,19 +2,13 @@
 
 @section('content')
 
-<div >
-    <div class=" home">
+<div>
+    <div class="home">
         <h2>Contacts</h2>
         <div class="d-flex">
             <div>
-                <input type="text" class="" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none;   border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
+                <input type="text" class="" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none; border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
             </div>
-
-            <!-- <select style="position: fixed; right: 0; margin: 10px; background-color: #F5F5F5; border: none; padding: 5px 5px;">
-                <option>Sort by:A-Z</option>
-                <option>A-Z</option>
-                <option>Z-A</option>
-            </select> -->
 
             <form method="GET" action="{{ route('contacts.index') }}" style="margin-left: auto; margin-right:20px;">
                 <select name="sort" onchange="this.form.submit()" style="background-color: #F5F5F5; border: none; padding: 5px 5px;">
@@ -22,23 +16,15 @@
                     <option value="Z-A" {{ request('sort') == 'Z-A' ? 'selected' : '' }}>Sort by: Z-A</option>
                 </select>
             </form>
-
         </div>
     </div>
-    <!-- <div class="input-group w-50"  >
-            <span class="input-group-text">
-                <i class="bi bi-search"></i>
-            </span>
-            
-        </div> -->
-
-
 </div>
 
 <div class="container-fluid mt-4" style="background-color: #F5F5F5;">
     <table class="table w-100">
         <thead style="border-bottom: 1px solid black;">
             <tr>
+                 <!-- New column for the image -->
                 <th>Name</th>
                 <th>Number</th>
                 <th>Email</th>
@@ -49,8 +35,17 @@
     <table class="table w-100">
         <tbody>
             @foreach($contacts as $contact)
-                <tr style="padding-bottom: 20px; border: none;"> <!-- Remove border for rows -->
-                    <td style="padding: 20px 0; border: none;">{{ $contact->firstName }} {{ $contact->lastName }}</td> <!-- Remove border for cells -->
+                <tr style="padding-bottom: 20px; border: none;">
+                    <!-- Display the image next to the contact's name -->
+                    <td style="padding: 20px 0; border: none;">
+                        @if($contact->image)
+                            <img src="{{ asset($contact->image) }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
+                        @else
+                            <!-- Display a default image if none is uploaded -->
+                            <img src="{{ asset('images/default.png') }}" alt="Default Image" style="width: 50px; height: 50px; border-radius: 50%;">
+                        @endif
+                    </td>
+                    <td style="padding: 20px 0; border: none;">{{ $contact->firstName }} {{ $contact->lastName }}</td>
                     <td style="padding: 20px 0; border: none;">{{ $contact->phoneNumber }}</td>
                     <td style="padding: 20px 0; border: none;">{{ $contact->email }}</td>
                 </tr>

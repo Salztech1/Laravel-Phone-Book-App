@@ -2,7 +2,7 @@
 
 @section('content')
 <h2 class="mt-3 contact">Create Contact</h2>
-<form method="POST" action="{{route('contacts.store')}}">
+<form method="POST" action="{{route('contacts.store')}}" enctype="multipart/form-data">
     @csrf
     <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px; " class="mt-5 ">
         <div class="contact">
@@ -11,8 +11,11 @@
                 <button style="position: fixed; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Save Contact <i class="bi bi-box-arrow-in-down"></i></button>
             </div>
 
+            <!-- Image Upload Section -->
             <div style="margin-left:70px;">
-                <img src="{{URL('images/profile.png')}}" alt="">
+                <img id="profileImage" src="{{URL('images/profile.png')}}" alt="Profile Image" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%;">
+                <!-- Hidden input for file upload -->
+                <input type="file" name="image" id="imageUpload" style="display: none;" accept="image/*">
             </div>
 
             <hr />
@@ -43,5 +46,32 @@
 </form>
 </div>
 </div>
+
+<script>
+    // Get the image and file input elements
+    const profileImage = document.getElementById('profileImage');
+    const imageUpload = document.getElementById('imageUpload');
+
+    // Trigger the file input when the image is clicked
+    profileImage.addEventListener('click', function() {
+        imageUpload.click();
+    });
+
+    // Display the uploaded image on selection
+    imageUpload.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Set the profile image src to the uploaded image
+                profileImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 
 @endsection
