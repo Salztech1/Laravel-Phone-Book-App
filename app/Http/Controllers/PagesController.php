@@ -7,31 +7,25 @@ use App\Models\Models\Contact;
 
 class PagesController extends Controller
 {
-    public function createContact () {
+    public function createContact()
+    {
         return view('contact');
     }
 
-    // public function showAboutPage() {
-    //     return view('about');
-    // }
-
-    // public function showProfile() {
-    //     return view('profile');
-    // }
 
 
 
-
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $data = $request->all();
-    
+
         $contact = new Contact;
         $contact->firstName = $data['firstName'];
         $contact->lastName = $data['lastName'];
         $contact->phoneNumber = $data['phoneNumber'];
         $contact->category = $data['category'];
         $contact->email = $data['email'];
-    
+
         // Handle image upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -39,82 +33,39 @@ class PagesController extends Controller
             $image->move(public_path('images/uploads'), $imageName);
             $contact->image = 'images/uploads/' . $imageName;
         }
-    
+
         $contact->save();
-    
+
         // Redirect to the landing page
         return redirect()->route('showLandingPage');
     }
-    
+
     public function showLandingPage()
     {
         // Retrieve all contacts
         $contacts = Contact::all();
-    
+
         // Pass contacts to the view
         return view('welcome', compact('contacts'));
     }
-    
-
-//     public function store(Request $request) {
-//         // return view('contacts.store');
-//         $data = $request->all();
-//        // dd($data);
-//         //echo 'Data stored';
-
-//         $contact = new Contact;
-//         $contact->firstName = $data['firstName'];
-//         $contact->lastName = $data['lastName'];
-//         $contact->phoneNumber = $data['phoneNumber'];
-//         //$contact->image = $data['images'];
-//         $contact->category = $data['category'];
-//         $contact->email = $data['email'];
-//         $contact->save();
-
-//        // dd($contact);
-//        //return redirect()->route('landing');
-//        return redirect()->route('showLandingPage');
-
-//     }
-
-// //     public function showLandingPage()
-// // {
-// //     // Retrieve all contacts from the database
-// //     $contacts = Contact::all();
-
-// //     // Pass the contacts data to the welcome view
-// //     return view('welcome', ['contacts' => $contacts]);
-// // }
-
-// public function showLandingPage()
-//     {
-//         // Retrieve all contacts
-//         $contacts = Contact::all();
-
-//         // Pass contacts to the view
-//         return view('welcome', compact('contacts'));
-//     }
 
 
 
-public function index(Request $request)
-{
-    $sort = $request->input('sort');
+    public function index(Request $request)
+    {
+        $sort = $request->input('sort');
 
-    if ($sort == 'A-Z') {
-        // Sort contacts by name in ascending order
-        $contacts = Contact::orderBy('firstName', 'asc')->get();
-    } elseif ($sort == 'Z-A') {
-        // Sort contacts by name in descending order
-        $contacts = Contact::orderBy('firstName', 'desc')->get();
-    } else {
-        // Default: return contacts without sorting
-        $contacts = Contact::all();
+        if ($sort == 'A-Z') {
+            // Sort contacts by name in ascending order
+            $contacts = Contact::orderBy('firstName', 'asc')->get();
+        } elseif ($sort == 'Z-A') {
+            // Sort contacts by name in descending order
+            $contacts = Contact::orderBy('firstName', 'desc')->get();
+        } else {
+            // Default: return contacts without sorting
+            $contacts = Contact::all();
+        }
+
+        return view('welcome', compact('contacts'));
     }
-
-    return view('welcome', compact('contacts'));
-}
-
-
-    
 };
