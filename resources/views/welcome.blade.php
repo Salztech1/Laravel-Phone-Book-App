@@ -10,11 +10,19 @@
                 <input type="text" class="" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none;   border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
             </div>
 
-            <select style="position: fixed; right: 0; margin: 10px; background-color: #F5F5F5; border: none; padding: 5px 5px;">
+            <!-- <select style="position: fixed; right: 0; margin: 10px; background-color: #F5F5F5; border: none; padding: 5px 5px;">
                 <option>Sort by:A-Z</option>
                 <option>A-Z</option>
                 <option>Z-A</option>
-            </select>
+            </select> -->
+
+            <form method="GET" action="{{ route('contacts.index') }}" style="margin-left: auto; margin-right:20px;">
+                <select name="sort" onchange="this.form.submit()" style="background-color: #F5F5F5; border: none; padding: 5px 5px;">
+                    <option value="A-Z" {{ request('sort') == 'A-Z' ? 'selected' : '' }}>Sort by: A-Z</option>
+                    <option value="Z-A" {{ request('sort') == 'Z-A' ? 'selected' : '' }}>Sort by: Z-A</option>
+                </select>
+            </form>
+
         </div>
     </div>
     <!-- <div class="input-group w-50"  >

@@ -47,5 +47,26 @@ class PagesController extends Controller
     return view('welcome', ['contacts' => $contacts]);
 }
 
+
+
+public function index(Request $request)
+{
+    $sort = $request->input('sort');
+
+    if ($sort == 'A-Z') {
+        // Sort contacts by name in ascending order
+        $contacts = Contact::orderBy('firstName', 'asc')->get();
+    } elseif ($sort == 'Z-A') {
+        // Sort contacts by name in descending order
+        $contacts = Contact::orderBy('firstName', 'desc')->get();
+    } else {
+        // Default: return contacts without sorting
+        $contacts = Contact::all();
+    }
+
+    return view('welcome', compact('contacts'));
+}
+
+
     
 };
