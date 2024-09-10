@@ -28,7 +28,7 @@
 </div>
 
 <div class="container-fluid mt-4" style="background-color: #F5F5F5;">
-    <table class="table table-striped w-100">
+    <table class="table w-100">
         <thead style="border-bottom: 1px solid black;">
             <tr>
                 <th>Name</th>
@@ -38,12 +38,15 @@
         </thead>
     </table>
     <p>Contacts</p>
-    <table class=" table-striped w-100">
+    <table class="table w-100">
         <tbody>
-            <tr>
-             
-            </tr>
-            
+            @foreach($contacts as $contact)
+                <tr style="padding-bottom: 20px; border: none;"> <!-- Remove border for rows -->
+                    <td style="padding: 20px 0; border: none;">{{ $contact->firstName }} {{ $contact->lastName }}</td> <!-- Remove border for cells -->
+                    <td style="padding: 20px 0; border: none;">{{ $contact->phoneNumber }}</td>
+                    <td style="padding: 20px 0; border: none;">{{ $contact->email }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
