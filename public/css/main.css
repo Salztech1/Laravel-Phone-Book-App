@@ -9,10 +9,6 @@ body {
     
 }
 
-/* table th, table td {
-    width: 33.33%;
-} */
-
 .content{
     color: black;
     border: 1px solid white;
@@ -27,14 +23,24 @@ body {
 }
 
 .create_contact{
-    margin-top: 40%;
-    
-    
+    margin-top: 40%;  
 }
 
 
 a{
-
     text-decoration: none;
-  
 }
+
+.contact{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+input::placeholder {
+    color: black;
+  }
+
+  .number{
+    width: 38%;
+    
+  }
