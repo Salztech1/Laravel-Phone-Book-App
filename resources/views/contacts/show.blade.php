@@ -7,11 +7,21 @@
 
     <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px; " class="mt-5 ">
 
-    <div class="d-flex ">
-                <h2><a href=""><i class="bi bi-arrow-left-short text-dark"></a></i> </h2>
-                <button style="position: fixed; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Edit Contact <i class="bi bi-pen"></i></button>
-            </div>
-            
+
+        <div class="d-flex mt-3 contact  ">
+            <h2>
+                <a href="/"><i class="bi bi-arrow-left-short text-dark"></i></a>
+            </h2>
+
+            <span style="margin-left: auto;">
+                <button style=" background-color: #463FF1; color: white; border: none; padding: 5px 5px;" type="submit">
+                    Edit Contact <i class="bi bi-pen"></i>
+                </button>
+                <i class="bi bi-trash3"></i>
+            </span>
+        </div>
+
+
 
         <div class="contact">
             <div class="contact-image">
@@ -22,13 +32,13 @@
                 @endif
             </div>
             <h2 class="mt-3"> {{ $contact->firstName }} {{ $contact->lastName }}</h2>
-            <hr/>
+            <hr />
             <div class="contact-info">
-                <h6 >Contact details</h6>
+                <h6>Contact details</h6>
                 <div style="margin-left: 30px; ">
-                <p><strong><img src="{{URL('images/phone.png')}}"></strong> {{ $contact->phoneNumber }}</p>
-                <p><strong> <img src="{{URL('images/email.png')}}"></strong> {{ $contact->email }}</p>
-                <p><strong><img src="{{URL('images/category.png')}}"></strong> {{ $contact->category }}</p>
+                    <p><strong><img src="{{URL('images/phone.png')}}"></strong> {{ $contact->phoneNumber }}</p>
+                    <p><strong> <img src="{{URL('images/email.png')}}"></strong> {{ $contact->email }}</p>
+                    <p><strong><img src="{{URL('images/category.png')}}"></strong> {{ $contact->category }}</p>
                 </div>
             </div>
         </div>
