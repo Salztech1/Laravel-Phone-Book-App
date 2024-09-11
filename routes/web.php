@@ -13,6 +13,7 @@ Route::get('contact-us', [PagesController::class, 'createContact'])->name('conta
 // Route::get('profile-me', [PagesController::class, 'showProfile'])->name('profile');
 // In your web.php
 Route::get('/contacts', [PagesController::class, 'index'])->name('contacts.index');
+//Route::get('/contacts/{id}', [PagesController::class, 'showContact'])->name('contacts.show');
 
 
 
