@@ -11,17 +11,6 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    // public function showAboutPage() {
-    //     return view('about');
-    // }
-
-    // public function showProfile() {
-    //     return view('profile');
-    // }
-
-
-
-
     public function store(Request $request) {
         $data = $request->all();
     
@@ -75,16 +64,14 @@ public function index(Request $request)
     return view('welcome', compact('contacts'));
 }
 
-
-// PagesController.php
-
-// PagesController.php
-
 public function showContact($id)
 {
     $contact = Contact::findOrFail($id);
     return view('contacts.show', compact('contact'));
 }
+
+
+
 
     
 };
