@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Models\Contact;
 
 class PagesController extends Controller
@@ -11,29 +12,34 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function store(Request $request) {
-        $data = $request->all();
-    
-        $contact = new Contact;
-        $contact->firstName = $data['firstName'];
-        $contact->lastName = $data['lastName'];
-        $contact->phoneNumber = $data['phoneNumber'];
-        $contact->category = $data['category'];
-        $contact->email = $data['email'];
-    
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/uploads'), $imageName);
-            $contact->image = 'images/uploads/' . $imageName;
-        }
-    
-        $contact->save();
-    
-        // Redirect to the landing page
-        return redirect()->route('showLandingPage');
+    public function store(Request $request)
+{
+    $request->validate([
+        'firstName' => 'required|string|max:255',
+        'lastName' => 'required|string|max:255',
+        'phoneNumber' => 'required|string|max:20',
+        'email' => 'required|email|max:255',
+        'category' => 'nullable|string|max:255',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
+
+    $contact = new Contact();
+    $contact->firstName = $request->firstName;
+    $contact->lastName = $request->lastName;
+    $contact->phoneNumber = $request->phoneNumber;
+    $contact->email = $request->email;
+    $contact->category = $request->category;
+
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('images', 'public');
+        $contact->image = $path;
     }
+
+    $contact->save();
+
+    return redirect('/')->with('success', 'Contact created successfully');
+}
+
     
     public function showLandingPage()
     {
@@ -73,5 +79,50 @@ public function showContact($id)
 
 
 
+
+
+
+    public function edit($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return view('contacts.edit', compact('contact'));
+    }
+
+    public function update(Request $request, $id)
+{
+    $contact = Contact::findOrFail($id);
+
+    $request->validate([
+        'firstName' => 'required|string|max:255',
+        'lastName' => 'required|string|max:255',
+        'phoneNumber' => 'required|string|max:20',
+        'email' => 'required|email|max:255',
+        'category' => 'nullable|string|max:255',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
+
+    if ($request->hasFile('image')) {
+        if ($contact->image) {
+            Storage::delete('public/' . $contact->image);
+        }
+        $path = $request->file('image')->store('images', 'public');
+        $contact->image = $path;
+    }
+
+    $contact->firstName = $request->firstName;
+    $contact->lastName = $request->lastName;
+    $contact->phoneNumber = $request->phoneNumber;
+    $contact->email = $request->email;
+    $contact->category = $request->category;
+
+    $contact->save();
+
+    return redirect('/')->with('success', 'Contact updated successfully');
+}
+
+}
+
+
+
     
-};
+

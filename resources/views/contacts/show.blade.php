@@ -14,9 +14,9 @@
             </h2>
 
             <span style="margin-left: auto;">
-                <button style=" background-color: #463FF1; color: white; border: none; padding: 5px 5px;" type="submit">
+            <a href="{{ route('contacts.edit', $contact->id) }}"> <button style=" background-color: #463FF1; color: white; border: none; padding: 5px 5px;" type="submit">
                     Edit Contact <i class="bi bi-pen"></i>
-                </button>
+                </button> </a>
                 <i class="bi bi-trash3"></i>
             </span>
         </div>
@@ -26,7 +26,7 @@
         <div class="contact">
             <div class="contact-image">
                 @if($contact->image)
-                <img src="{{ asset($contact->image) }}" alt="Profile Image" style="width: 100px; height: 100px; border-radius: 50%;">
+                <img src="{{ asset('storage/' . $contact->image) }}" alt="Profile Image" style="width: 100px; height: 100px; border-radius: 50%;">
                 @else
                 <img src="{{ asset('images/contact-image.png') }}" alt="Default Image" style="width: 100px; height: 100px; border-radius: 50%;">
                 @endif

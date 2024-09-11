@@ -32,27 +32,26 @@
     </table>
     <p>Contacts</p>
     <table class="table w-100">
-        <tbody>
-            @foreach($contacts as $contact)
-                <tr style="padding-bottom: 20px; border: none;">
-                    <td style="padding: 20px 0; border: none;">
-                        @if($contact->image)
-                            <img src="{{ asset($contact->image) }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
-                        @else
-                            <img src="{{ asset('images/default.png') }}" alt="Default Image" style="width: 50px; height: 50px; border-radius: 50%;">
-                        @endif
-                    </td>
-                    <td style="padding: 20px 0; border: none;">
-                        <a href="{{ route('contacts.show', $contact->id) }}">
-                            {{ $contact->firstName }} {{ $contact->lastName }}
-                        </a>
-                    </td>
-                    <td style="padding: 20px 0; border: none;">{{ $contact->phoneNumber }}</td>
-                    <td style="padding: 20px 0; border: none;">{{ $contact->email }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <tbody>
+        @foreach($contacts as $contact)
+            <tr style="padding-bottom: 20px; border: none;">
+                <td style="padding: 10px 0; border: none; display: flex; align-items: center;">
+                    @if($contact->image)
+                        <img src="{{ asset('storage/' . $contact->image) }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; margin-top: 5px;">
+                    @else
+                        <img src="{{ asset('images/default.png') }}" alt="Default Image" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; margin-top: 5px;">
+                    @endif
+                    <a href="{{ route('contacts.show', $contact->id) }}" style="text-decoration: none; color: #000;">
+                        {{ $contact->firstName }} {{ $contact->lastName }}
+                    </a>
+                </td>
+                <td style="padding: 10px 0; border: none;">{{ $contact->phoneNumber }}</td>
+                <td style="padding: 10px 0; border: none;">{{ $contact->email }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
 </div>
 
 @endsection
