@@ -9,7 +9,7 @@
         <div class="contact">
             <div class="d-flex">
                 <h2><a href="/"><i class="bi bi-arrow-left-short text-dark"></a></i> </h2>
-                <button style="position: fixed; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Update Contact <i class="bi bi-pen"></i></button>
+                <button style="position: fixed; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Save Changes <i class="bi bi-box-arrow-in-down"></i></button>
             </div>
 
             <!-- Image Upload Section -->
@@ -22,9 +22,9 @@
             <hr />
             <p>Details</p>
             <i class="bi bi-person"></i>
-            <input type="text" name="firstName" placeholder="First Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:20px;outline:none;" value="{{ $contact->firstName }}" />
+            <input type="text" name="firstName" placeholder="First Name" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:20px;outline:none;" value="{{ $contact->firstName }}" />
 
-            <input type="text" name="lastName" placeholder="Last Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:40px; margin-top:15px;outline:none;" value="{{ $contact->lastName }}" />
+            <input type="text" name="lastName" placeholder="Last Name" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:40px; margin-top:15px;outline:none;" value="{{ $contact->lastName }}" />
 
             <div>
                 <img src="{{URL('images/phone.png')}}">
@@ -34,17 +34,17 @@
                     <option value="de" data-flag="🇩🇪">Germany</option>
                     <option value="jp" data-flag="🇯🇵">Japan</option>
                 </select>
-                <input type="tel" name="phoneNumber" placeholder="Phone Number" class="number" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px;outline:none;" value="{{ $contact->phoneNumber }}" />
+                <input type="tel" name="phoneNumber" placeholder="Phone Number" class="number" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px;outline:none;" value="{{ $contact->phoneNumber }}" />
             </div>
 
             <div>
                 <img src="{{URL('images/email.png')}}">
-                <input type="email" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->email }}" />
+                <input type="email" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->email }}" />
             </div>
 
             <div>
                 <img src="{{URL('images/category.png')}}">
-                <input type="text" name="category" placeholder="Category" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->category }}" />
+                <input type="text" name="category" placeholder="Category" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->category }}" />
             </div>
         </div>
     </div>
