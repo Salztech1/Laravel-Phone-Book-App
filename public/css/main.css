@@ -44,3 +44,13 @@ input::placeholder {
     width: 38%;
     
   }
+
+  .contact-image{
+    margin-left: 15%;
+  }
+
+  .contact-info{
+    background-color: #DEDEFF;
+    width: 450px;
+    padding:20px;
+  }

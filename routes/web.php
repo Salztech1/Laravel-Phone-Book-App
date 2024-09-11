@@ -15,5 +15,7 @@ Route::get('contact-us', [PagesController::class, 'createContact'])->name('conta
 Route::get('/contacts', [PagesController::class, 'index'])->name('contacts.index');
 
 
+
 Route::post('contacts', [PagesController::class, 'store'])->name('contacts.store');
 
+Route::get('/contacts/{id}', [PagesController::class, 'showContact'])->name('contacts.show');

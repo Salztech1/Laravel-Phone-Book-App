@@ -24,7 +24,6 @@
     <table class="table w-100">
         <thead style="border-bottom: 1px solid black;">
             <tr>
-                 <!-- New column for the image -->
                 <th>Name</th>
                 <th>Number</th>
                 <th>Email</th>
@@ -36,16 +35,18 @@
         <tbody>
             @foreach($contacts as $contact)
                 <tr style="padding-bottom: 20px; border: none;">
-                    <!-- Display the image next to the contact's name -->
                     <td style="padding: 20px 0; border: none;">
                         @if($contact->image)
                             <img src="{{ asset($contact->image) }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
                         @else
-                            <!-- Display a default image if none is uploaded -->
                             <img src="{{ asset('images/default.png') }}" alt="Default Image" style="width: 50px; height: 50px; border-radius: 50%;">
                         @endif
                     </td>
-                    <td style="padding: 20px 0; border: none;">{{ $contact->firstName }} {{ $contact->lastName }}</td>
+                    <td style="padding: 20px 0; border: none;">
+                        <a href="{{ route('contacts.show', $contact->id) }}">
+                            {{ $contact->firstName }} {{ $contact->lastName }}
+                        </a>
+                    </td>
                     <td style="padding: 20px 0; border: none;">{{ $contact->phoneNumber }}</td>
                     <td style="padding: 20px 0; border: none;">{{ $contact->email }}</td>
                 </tr>
