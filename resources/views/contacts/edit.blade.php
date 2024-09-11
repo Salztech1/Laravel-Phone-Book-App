@@ -1,29 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="mt-3 contact">Create Contact</h2>
-<form method="POST" action="{{route('contacts.store')}}" enctype="multipart/form-data">
+<h2 class="mt-3 contact">Edit Contact</h2>
+<form method="POST" action="{{ route('contacts.update', $contact->id) }}" enctype="multipart/form-data">
     @csrf
-    <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px; " class="mt-5 ">
+    @method('PUT')
+    <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px;" class="mt-5">
         <div class="contact">
-            <div class="d-flex mt-3">
+            <div class="d-flex">
                 <h2><a href="/"><i class="bi bi-arrow-left-short text-dark"></a></i> </h2>
-                <button style="margin-left: auto; background-color: #463FF1;color:white; border: none; padding: 5px, 15px, 5px, 15px; border-radius:5px ;" type="submit">Save Contact <i class="bi bi-box-arrow-in-down"></i></button>
+                <button style="position: fixed; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Save Changes <i class="bi bi-box-arrow-in-down"></i></button>
             </div>
 
             <!-- Image Upload Section -->
             <div style="margin-left:70px;">
-                <img id="profileImage" src="{{URL('images/profile.png')}}" alt="Profile Image" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%;">
-                <!-- Hidden input for file upload -->
+            <img id="profileImage" src="{{ $contact->image ? asset('storage/' . $contact->image) : URL('images/profile.png') }}" alt="Profile Image" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%;">
+
                 <input type="file" name="image" id="imageUpload" style="display: none;" accept="image/*">
             </div>
 
             <hr />
             <p>Details</p>
             <i class="bi bi-person"></i>
-            <input type="text" name="firstName" placeholder="First Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:20px;outline:none; " />
+            <input type="text" name="firstName" placeholder="First Name" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:20px;outline:none;" value="{{ $contact->firstName }}" />
 
-            <input type="text" name="lastName" placeholder="Last Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:40px; margin-top:15px;outline:none; " />
+            <input type="text" name="lastName" placeholder="Last Name" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:40px; margin-top:15px;outline:none;" value="{{ $contact->lastName }}" />
+
             <div>
                 <img src="{{URL('images/phone.png')}}">
                 <select id="countrySelect">
@@ -32,20 +34,21 @@
                     <option value="de" data-flag="🇩🇪">Germany</option>
                     <option value="jp" data-flag="🇯🇵">Japan</option>
                 </select>
-                <input type="tel" name="phoneNumber" placeholder="Phone Number" class="number" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px;outline:none; " />
+                <input type="tel" name="phoneNumber" placeholder="Phone Number" class="number" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px;outline:none;" value="{{ $contact->phoneNumber }}" />
             </div>
 
             <div>
                 <img src="{{URL('images/email.png')}}">
-                <input type="text" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px; outline:none; " />
+                <input type="email" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->email }}" />
             </div>
+
             <div>
                 <img src="{{URL('images/category.png')}}">
-                <input type="text" name="category" placeholder="Category" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px; outline:none; " />
+                <input type="text" name="category" placeholder="Category" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->category }}" />
             </div>
+        </div>
+    </div>
 </form>
-</div>
-</div>
 
 <script>
     // Get the image and file input elements
@@ -73,5 +76,4 @@
         }
     });
 </script>
-
 @endsection
