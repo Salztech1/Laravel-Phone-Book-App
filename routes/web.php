@@ -26,3 +26,6 @@ Route::get('/contacts/{id}/edit', [PagesController::class, 'edit'])->name('conta
 
 // Update contact in the database
 Route::put('/contacts/{id}', [PagesController::class, 'update'])->name('contacts.update');
+
+Route::delete('/contacts/{id}', [PagesController::class, 'destroy'])->name('contacts.destroy');
+
