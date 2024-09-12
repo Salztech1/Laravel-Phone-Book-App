@@ -3,21 +3,24 @@
 @section('content')
 
 <div>
+<div>
     <div class="home">
         <h2>Contacts</h2>
         <div class="d-flex">
-            <div>
-                <input type="text" class="" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none; border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
-            </div>
+            <form method="GET" action="{{ route('contacts.index') }}" style="display: flex; width: 100%;">
+                <div>
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..." aria-label="Search" style="background-color: #F5F5F5; outline: none; border: none; padding: 5px 5px; border-radius: 10px; width: 180%;">
+                </div>
 
-            <form method="GET" action="{{ route('contacts.index') }}" style="margin-left: auto; margin-right:20px;">
-                <select name="sort" onchange="this.form.submit()" style="background-color: #F5F5F5; border: none; padding: 5px 5px;">
+                <select name="sort" onchange="this.form.submit()" style="background-color: #F5F5F5; border: none; padding: 5px 5px; margin-left: auto; margin-right:20px;">
                     <option value="A-Z" {{ request('sort') == 'A-Z' ? 'selected' : '' }}>Sort by: A-Z</option>
                     <option value="Z-A" {{ request('sort') == 'Z-A' ? 'selected' : '' }}>Sort by: Z-A</option>
                 </select>
             </form>
         </div>
     </div>
+</div>
+
 
 
 

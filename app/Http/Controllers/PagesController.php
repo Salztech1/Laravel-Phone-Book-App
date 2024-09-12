@@ -52,23 +52,54 @@ class PagesController extends Controller
     }
 
 
+    // public function index(Request $request)
+    // {
+    //     $sort = $request->input('sort');
+
+    //     if ($sort == 'A-Z') {
+    //         // Sort contacts by name in ascending order
+    //         $contacts = Contact::orderBy('firstName', 'asc')->get();
+    //     } elseif ($sort == 'Z-A') {
+    //         // Sort contacts by name in descending order
+    //         $contacts = Contact::orderBy('firstName', 'desc')->get();
+    //     } else {
+    //         // Default: return contacts without sorting
+    //         $contacts = Contact::all();
+    //     }
+
+    //     return view('welcome', compact('contacts'));
+    // }
+
+
     public function index(Request $request)
-    {
-        $sort = $request->input('sort');
+{
+    $query = Contact::query();
 
-        if ($sort == 'A-Z') {
-            // Sort contacts by name in ascending order
-            $contacts = Contact::orderBy('firstName', 'asc')->get();
-        } elseif ($sort == 'Z-A') {
-            // Sort contacts by name in descending order
-            $contacts = Contact::orderBy('firstName', 'desc')->get();
-        } else {
-            // Default: return contacts without sorting
-            $contacts = Contact::all();
-        }
-
-        return view('welcome', compact('contacts'));
+    // Search by name or phone number
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $query->where(function ($q) use ($search) {
+            $q->where('firstName', 'LIKE', "%{$search}%")
+              ->orWhere('lastName', 'LIKE', "%{$search}%")
+              ->orWhere('phoneNumber', 'LIKE', "%{$search}%");
+        });
     }
+
+    // Sort alphabetically
+    if ($request->filled('sort')) {
+        if ($request->input('sort') == 'A-Z') {
+            $query->orderBy('firstName', 'asc');
+        } elseif ($request->input('sort') == 'Z-A') {
+            $query->orderBy('firstName', 'desc');
+        }
+    }
+
+    $contacts = $query->get();
+
+    return view('welcome', compact('contacts'));
+}
+
+
 
     public function showContact($id)
     {
