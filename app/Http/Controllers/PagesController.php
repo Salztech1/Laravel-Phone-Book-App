@@ -49,7 +49,6 @@ class PagesController extends Controller
         // Pass contacts to the view
         return view('welcome', compact('contacts'));
     }
-    
 
 
 public function index(Request $request)
@@ -76,12 +75,6 @@ public function showContact($id)
     return view('contacts.show', compact('contact'));
 }
 
-
-
-
-
-
-
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
@@ -99,6 +92,7 @@ public function showContact($id)
         'email' => 'nullable|email|max:255',
         'category' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpg,jpeg,png',
+        
     ]);
 
     if ($request->hasFile('image')) {
