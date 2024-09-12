@@ -39,7 +39,7 @@
 
             <div>
                 <img src="{{URL('images/email.png')}}">
-                <input type="email" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->email }}" />
+                <input type="text" name="email" placeholder="Email" class="w-50" style="padding: 15px 10px; border:none; border-radius: 5px; margin-left:10px; margin-top:15px; outline:none;" value="{{ $contact->email }}" />
             </div>
 
             <div>
@@ -73,6 +73,38 @@
             };
 
             reader.readAsDataURL(file);
+        }
+    });
+
+    // Form validation for phone number and email
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+
+        // Regex for phone number: accept numbers, spaces, and symbols (+,#,ext, etc.)
+        const phonePattern = /^[0-9+\(\)#\.\s\/ext-]+$/;
+        // Regex for email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        let valid = true;
+        let errorMessage = "";
+
+        // Validate phone number
+        if (!phonePattern.test(phoneNumber)) {
+            valid = false;
+            errorMessage += "Invalid phone number. Please enter a valid phone number.\n";
+        }
+
+        // Validate email
+        if (!emailPattern.test(email)) {
+            valid = false;
+            errorMessage += "Invalid email. Please enter a valid email address.\n";
+        }
+
+        // If validation fails, show an alert and prevent form submission
+        if (!valid) {
+            alert(errorMessage);
+            event.preventDefault(); // Prevent form submission if validation fails
         }
     });
 </script>

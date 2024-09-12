@@ -14,10 +14,17 @@
             </h2>
 
             <span style="margin-left: auto;">
-            <a href="{{ route('contacts.edit', $contact->id) }}"> <button style=" background-color: #463FF1; color: white; border: none; padding: 5px 5px;" type="submit">
-                    Edit Contact <i class="bi bi-pen"></i>
-                </button> </a>
-                <i class="bi bi-trash3"></i>
+                <a href="{{ route('contacts.edit', $contact->id) }}"> <button style=" background-color: #463FF1; color: white; border: none; padding: 5px 5px;" type="submit">
+                        Edit Contact <i class="bi bi-pen"></i>
+                    </button> </a>
+                <!-- Delete Contact Form -->
+                <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this contact?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" style="background: none; border: none; color: red;">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
             </span>
         </div>
 
