@@ -21,9 +21,9 @@
             <hr />
             <p>Details</p>
             <i class="bi bi-person"></i>
-            <input type="text" name="firstName" placeholder="First Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:20px;outline:none; " />
+            <input type="text" name="firstName" placeholder="First Name" required class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:20px;outline:none; " />
 
-            <input type="text" name="lastName" placeholder="Last Name" class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:40px; margin-top:15px;outline:none; " />
+            <input type="text" name="lastName" placeholder="Last Name" required class="w-50" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:40px; margin-top:15px;outline:none; " />
             <div>
                 <img src="{{URL('images/phone.png')}}">
                 <select id="countrySelect">
@@ -32,7 +32,7 @@
                     <option value="de" data-flag="🇩🇪">Germany</option>
                     <option value="jp" data-flag="🇯🇵">Japan</option>
                 </select>
-                <input type="tel" name="phoneNumber" placeholder="Phone Number" class="number" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px;outline:none; " />
+                <input type="tel" name="phoneNumber" placeholder="Phone Number" required class="number" style="padding: 15px 10px; border:none; background-color:#CCCCCC;border-radius: 5px; margin-left:10px; margin-top:15px;outline:none; " />
             </div>
 
             <div>
