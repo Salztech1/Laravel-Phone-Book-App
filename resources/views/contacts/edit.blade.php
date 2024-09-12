@@ -7,9 +7,9 @@
     @method('PUT')
     <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px;" class="mt-5">
         <div class="contact">
-            <div class="d-flex">
+        <div class="d-flex mt-3">
                 <h2><a href="/"><i class="bi bi-arrow-left-short text-dark"></a></i> </h2>
-                <button style="position: auto; right: 0; margin: 10px; background-color: #463FF1;color:white; border: none; padding: 5px 5px;" type="submit">Save Changes <i class="bi bi-box-arrow-in-down"></i></button>
+                <button style="margin-left: auto; background-color: #463FF1;color:white; border: none; padding: 5px, 15px, 5px, 15px; border-radius:5px ;" type="submit">Save Changes <i class="bi bi-box-arrow-in-down"></i></button>
             </div>
 
             <!-- Image Upload Section -->
