@@ -18,7 +18,7 @@ class PagesController extends Controller
         'firstName' => 'required|string|max:255',
         'lastName' => 'required|string|max:255',
         'phoneNumber' => 'required|string|max:20',
-        'email' => 'required|email|max:255',
+        'email' => 'nullable|email|max:255',
         'category' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);
@@ -96,7 +96,7 @@ public function showContact($id)
         'firstName' => 'required|string|max:255',
         'lastName' => 'required|string|max:255',
         'phoneNumber' => 'required|string|max:20',
-        'email' => 'required|email|max:255',
+        'email' => 'nullable|email|max:255',
         'category' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);
