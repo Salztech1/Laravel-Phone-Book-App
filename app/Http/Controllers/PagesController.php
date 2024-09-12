@@ -17,7 +17,7 @@ class PagesController extends Controller
     $request->validate([
         'firstName' => 'required|string|max:255',
         'lastName' => 'required|string|max:255',
-        'phoneNumber' => 'required|string|max:20',
+        'phoneNumber' => 'required|regex:/^[0-9+\(\)#\.\s\/ext-]+$/',
         'email' => 'required|email|max:255',
         'category' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -95,7 +95,7 @@ public function showContact($id)
     $request->validate([
         'firstName' => 'required|string|max:255',
         'lastName' => 'required|string|max:255',
-        'phoneNumber' => 'required|string|max:20',
+        'phoneNumber' => 'required|regex:/^[0-9+\(\)#\.\s\/ext-]+$/', 
         'email' => 'required|email|max:255',
         'category' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
