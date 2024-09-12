@@ -22,21 +22,28 @@
                 </h2>
 
                 <div class="create_contact">
-                    <button style="background-color: #272727; padding: 0px 50px; border: none; border-radius: 10px;">
-                        <a href="{{ route('contact')}}"> <span class="bi bi-plus " style="background-color: #2B2881; color:white;">
+                    <a href="{{ route('contact')}}">
+                        <button style="background-color: #272727; padding:0px 50px 0px 10px; border: none; border-radius: 10px; display: flex;   text-align: center;">
+                            <span class="bi bi-plus" style="background-color: #2B2881; color: white; font-size: 24px; padding: 10px; border-radius: 30%; display: flex;  margin-bottom: 5px; ">
                             </span>
+                            <div style="margin-left: 5px;">
                             <span style="color: #A3A3A3;">
                                 Create new
-                            </span><br>
+                            </span><br/>
                             <span class="text-white">
                                 Contact
                             </span>
-                        </a>
-                    </button><br />
+                            </div>
+                        </button>
+                        <br />
+                    </a>
 
-                    <button style="background-color: #404040;   padding: 0px 60px; border: none; border-radius: 5px;" class="mt-3">
-                        <a href="/"><span class="bi bi-person-fill "><span class="text-white">Contacts</span></span></a>
+                    <a href="/">
+                    <button style="background-color: #404040;   padding: 0px 80px 0px 20px; border: none; border-radius: 5px;" class="mt-3">
+                    <span class="bi bi-person-fill " style="color:#463FF1;">
+                        <span class="text-white">Contacts</span></span>
                     </button>
+                    </a>
                 </div>
 
             </div>
