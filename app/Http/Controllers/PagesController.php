@@ -20,7 +20,7 @@ class PagesController extends Controller
         'phoneNumber' => 'required|string|max:20',
         'email' => 'nullable|email|max:255',
         'category' => 'nullable|string|max:255',
-        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png',
     ]);
 
     $contact = new Contact();
@@ -98,7 +98,7 @@ public function showContact($id)
         'phoneNumber' => 'required|string|max:20',
         'email' => 'nullable|email|max:255',
         'category' => 'nullable|string|max:255',
-        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png',
     ]);
 
     if ($request->hasFile('image')) {
