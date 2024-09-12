@@ -27,6 +27,7 @@
             <div>
                 <img src="{{URL('images/phone.png')}}">
                 <select id="countrySelect">
+                <option value="us" data-flag="🇺🇸">Cameroon</option>
                     <option value="us" data-flag="🇺🇸">United States</option>
                     <option value="fr" data-flag="🇫🇷">France</option>
                     <option value="de" data-flag="🇩🇪">Germany</option>
