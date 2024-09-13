@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesController::class, 'showLandingPage'])->name('showLandingPage');
 
 
-Route::get('contact-us', [PagesController::class, 'createContact'])->name('contact');
+Route::get('contacts/create', [PagesController::class, 'createContact'])->name('contact');
 
 //Sort by A-Z & Z-A
 Route::get('/contacts', [PagesController::class, 'index'])->name('contacts.index');

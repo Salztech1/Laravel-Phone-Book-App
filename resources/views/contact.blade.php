@@ -2,6 +2,15 @@
 
 @section('content')
 <h2 class="mt-3 contact">Create Contact</h2>
+
+{{-- Display alert if the email has already been used --}}
+@if ($errors->has('email'))
+<script>
+    alert("{{ $errors->first('email') }}");
+</script>
+@endif
+
+
 <form method="POST" action="{{route('contacts.store')}}" enctype="multipart/form-data">
     @csrf
     <div style="background-color: #F5F5F5; border: 1px solid #F5F5F5; height: 821px; " class="mt-5 ">
